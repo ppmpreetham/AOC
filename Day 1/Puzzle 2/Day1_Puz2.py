@@ -1,7 +1,7 @@
 with open("Day 1/Puzzle 1/Day1_Puz1.txt") as file:
     contents = file.read()
 summ=0
-alpa={
+mapping={
     "one":"o1ne",
     "two":"t2wo",
     "three":"th3re",
