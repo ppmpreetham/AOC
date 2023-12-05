@@ -1,6 +1,10 @@
 # Day 1: Trebuchet?!
 ## Puzzle-1
+## Explanation
+I have used Two Pointer approach in order to get the starting digit and final digit.
+My puzzle answer was  `53080`.
 
+## Question
 Something is wrong with global snow production, and you've been selected to take a look. The Elves have even given you a map; on it, they've used stars to mark the top fifty locations that are likely to be having problems.
 
 You've been doing this long enough to know that to restore snow operations, you need to check all  _fifty stars_  by December 25th.
@@ -25,7 +29,3 @@ treb7uchet
 In this example, the calibration values of these four lines are  `12`,  `38`,  `15`, and  `77`. Adding these together produces  `142`.
 
 Consider your entire calibration document.  _What is the sum of all of the calibration values?_
-
-## Explanation
-I have used Two Pointer approach in order to get the starting digit and final digit.
-My puzzle answer was  `53080`.
