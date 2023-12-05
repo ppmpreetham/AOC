@@ -1,6 +1,6 @@
 with open("Day 1/Puzzle 1/Day1_Puz1.txt") as file:
     contents = file.read()
-summ=0
+flag=0
 mapping={
     "one":"o1ne",
     "two":"t2wo",
@@ -14,12 +14,12 @@ mapping={
 }
 for i in contents.split("\n"):
     fwd,bwd=0,0
-    for key, val in alpa.items():
+    for key, val in mapping.items():
         i = i.replace(key, str(val))
     for j in i:
         if j.isdigit():
             fwd=j
             if bwd==0:
                 bwd=j
-    summ += int(bwd+fwd)
-print(summ)
+    flag += int(bwd+fwd)
+print(flag)
