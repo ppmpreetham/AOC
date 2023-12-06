@@ -1,5 +1,5 @@
 import re
-with open("Day 2/Puzzle 1/Day2_Puz2.txt") as file:
+with open("Day 4/Puzzle 1/Day4_Puz1.txt") as file:
     contents = file.read()
 example="""
 Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
