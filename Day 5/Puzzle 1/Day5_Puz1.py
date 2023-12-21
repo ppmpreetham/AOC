@@ -53,8 +53,8 @@ def mapper(para):
             keymap[start] = end
         
         finalmap.update(keymap)
-        #edit: for I in range(end):
-        # if I in set, ignore, else add to set
+        #edit: for i in range(end):
+        # if i in set, ignore, else add to set
     return finalmap
 
 def finder(dict1, dict2):
