@@ -41,9 +41,11 @@ para ="""
 50 98 2
 52 50 48
 """
-def mapper(para):
+def mapper(para,line_no):
     finalmap={}
-    for line in para.strip().split('\n'):
+    para = para.strip().split('\n\n')[line_no].split('\n')[1:]
+    sorted_para = '\n'.join(sorted(para, key=lambda line: int(line.split(' ')[0])))
+    for line in sorted_para.strip().split('\n'):
         start = int(line.split(' ')[0])-1
         end = int(line.split(' ')[1])-1
         keymap = {}
@@ -53,9 +55,17 @@ def mapper(para):
             keymap[start] = end
         
         finalmap.update(keymap)
-        #edit: for i in range(end):
-        # if i in set, ignore, else add to set
     return finalmap
+
+high=list(mapper(ex,1).keys())[-1]
+print(high)
+def filler(finalmap):
+    for i in range(high):
+        if i not in finalmap:
+            finalmap[i] = i
+    finalmap = dict(sorted(finalmap.items()))
+    return finalmap
+
 
 def finder(dict1, dict2):
     dict3 = {}
@@ -66,12 +76,12 @@ def finder(dict1, dict2):
 
 seeds = list(map(int, re.findall(r'\d+', ex.split('\n')[0])))
 
-seed_to_soil = mapper('\n'.join(ex.split('\n\n')[1].split('\n')[1:]))
-soil_to_fertilizer = mapper('\n'.join(ex.split('\n\n')[2].split('\n')[1:]))
-fertilizer_to_water = mapper('\n'.join(ex.split('\n\n')[3].split('\n')[1:]))
-water_to_light = mapper('\n'.join(ex.split('\n\n')[4].split('\n')[1:]))
-light_to_temperature = mapper('\n'.join(ex.split('\n\n')[5].split('\n')[1:]))
-temperature_to_humidity = mapper('\n'.join(ex.split('\n\n')[6].split('\n')[1:]))
-humidity_to_location = mapper('\n'.join(ex.split('\n\n')[7].split('\n')[1:]))
-# print(seed_to_soil,soil_to_fertilizer)
-# print(finder(seed_to_soil, soil_to_fertilizer))
+seed_to_soil = filler(mapper(ex,1))
+soil_to_fertilizer = filler(mapper(ex,2))
+fertilizer_to_water = filler(mapper(ex,3))
+water_to_light = filler(mapper(ex,4))
+light_to_temperature = filler(mapper(ex,5))
+temperature_to_humidity = filler(mapper(ex,6))
+humidity_to_location =filler(mapper(ex,7))
+ 
+print(finder(seed_to_soil,soil_to_fertilizer))
