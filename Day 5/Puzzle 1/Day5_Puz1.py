@@ -1,3 +1,5 @@
+#This Code is incomplete and not working
+
 import re
 #seed-->soil--->fertilizer-->water-->light-->temperature-->humidity-->location
 with open("Day 5/Puzzle 1/Day5_Puz1.txt") as file:
