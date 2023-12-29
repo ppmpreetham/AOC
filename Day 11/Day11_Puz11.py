@@ -1,5 +1,6 @@
 # with open("") as file:
     # contents = file.read()
+
 example="""
 ...#......
 .......#..
@@ -11,15 +12,19 @@ example="""
 ..........
 .......#..
 #...#....."""
+
+rows=len(example.strip().split('\n')[1])
+dot_row='.'*rows
+example=example.replace(dot_row,f'{dot_row}\n{dot_row}')
 lines=example.strip().split('\n')
+columns=len(lines)
+
 lst=[]
-for i in lines:
+for index in range(rows):
     flag=0
-    for j in i:
-        if j=='.':
+    for line in lines:
+        if line[index]=='.':
             flag+=1
     lst.append(flag)
-    for haha in range(len(lst)):
-        if lst[haha]==10:
-            lines[haha]=lines[haha].
-print(lines)
+print(lst)
+
