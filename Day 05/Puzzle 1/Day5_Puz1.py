@@ -1,4 +1,4 @@
-#This Code is incomplete and not working
+#This Code is incomplete and is not working. I will update it soon.
 
 import re
 #seed-->soil--->fertilizer-->water-->light-->temperature-->humidity-->location
