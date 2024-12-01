@@ -1,7 +1,7 @@
 # AOC
 My solutions to AOC(Advent of Code) 2023.
 
-I've finally had my take on AOC, after a lot of my friends pushed me here. Here's where I store my solutions for each puzzle's code.
+I've finally had my take on AOC, after my friends pushed me here. Here's where I store my solutions for each puzzle's code.
 
 I'm also on:  
 <a href="https://www.linkedin.com/in/preethampete" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
