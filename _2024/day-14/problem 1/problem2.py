@@ -23,10 +23,39 @@ for line in inps.split("\n"):
     locn = (loc(int(line.split(" ")[0][2:].split(',')[0]), int(line.split(" ")[1][2:].split(",")[0]), iteration, bounds[0]), loc(int(line.split(" ")[0][2:].split(',')[1]), int(line.split(" ")[1][2:].split(",")[1]), iteration, bounds[1]))
     locations.append(locn)
 
-for i in range(bounds[0]):
-    for j in range(bounds[1]):
-        if (i,j) in locations:
-            print("*", end='')
-        else:
-            print(" ", end='')
-    print("\n")
+    
+import numpy as np
+
+def shannon_entropy():
+    
+    flat_grid = []
+    
+    for i in range(bounds[0]):
+        for j in range(bounds[1]):
+            if (i,j) in locations:
+                flat_grid+="*"
+            else:
+                flat_grid+=" "
+    
+    # flat_grid = [char for row in grid for char in row]
+    total = len(flat_grid)
+    
+    star_count = flat_grid.count('*')
+    space_count = flat_grid.count(' ')
+    
+    p_star = star_count / total
+    p_space = space_count / total
+    
+    probabilities = [p for p in [p_star, p_space] if p > 0]
+    
+    entropy = -sum(p * np.log2(p) for p in probabilities)
+    return entropy
+
+entropy_lst = [100]
+
+for i in range(1,101*103):
+    iteration = i
+    entropy_lst.append(shannon_entropy())
+    print(shannon_entropy())
+
+print(min(entropy_lst))
