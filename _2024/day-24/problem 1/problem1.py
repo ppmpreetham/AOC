@@ -310,27 +310,38 @@ pst XOR rdh -> z05
 njf XOR wkc -> z18
 bnj XOR vsm -> z09
 dss OR qhh -> ngd
-x06 AND y06 -> gqt"""
+x06 AND y06 -> gqt
+"""
 
 gate_to_value = {}
+z_vals = {}
+
 for thing in inps.rstrip().split("\n\n")[0].split("\n"):
     gate_to_value[thing.split(':')[0]] = int(thing.split(':')[1].strip())
 
-z_vals = {}
 for thing in inps.rstrip().split("\n\n")[1].split("\n"):
-    match thing.split(' -> ')[0].split(' ')[1]:
+    operation = thing.split(' -> ')[0]
+    output = thing.split(' -> ')[1]
+    inputs = operation.split(' ')
+
+    left = gate_to_value.get(inputs[0], 0)
+    right = gate_to_value.get(inputs[2], 0)
+
+    match inputs[1]:
         case 'AND':
-            val = gate_to_value[thing.split(' -> ')[0].split(' ')[0]] and gate_to_value[thing.split(' -> ')[0].split(' ')[2]]
+            val = left and right
         case 'OR':
-            val = gate_to_value[thing.split(' -> ')[0].split(' ')[0]] or gate_to_value[thing.split(' -> ')[0].split(' ')[2]]
+            val = left or right
         case 'XOR':
-            val = int(gate_to_value[thing.split(' -> ')[0].split(' ')[0]] != gate_to_value[thing.split(' -> ')[0].split(' ')[2]])
-    if thing.split(' -> ')[1][0]=='z':
-        z_vals[thing.split(' -> ')[1]] = val
-        gate_to_value[thing.split(' -> ')[1]] = val
+            val = int(left != right)
+
+    if output[0] == 'z':
+        z_vals[output] = val
+    if output not in gate_to_value:
+        gate_to_value[output] = val
 
 binary = ""
-for i in dict(sorted(z_vals.items(), reverse=True)):
-    binary += str(z_vals[i])
+for key in dict(sorted(z_vals.items(), reverse=True)):
+    binary += str(z_vals[key])
 
 print(int(binary, 2))
