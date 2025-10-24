@@ -1,0 +1,9 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "_2021/_day-01/problem-1/Cargo.toml",
+        "_2021/_day-01/problem-2/Cargo.toml",
+        "_2021/_day-02/problem-1/Cargo.toml",
+        "_2021/_day-04/problem-01/Cargo.toml",
+        // "_2021/_day-02/problem-2/Cargo.toml",
+    ]
+}
